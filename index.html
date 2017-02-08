@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="quotes">
+<head>
+    <meta charset="utf-8">
+    <title>angularQuotes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/yeti/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css"></link>
+</head>
+<body ng-controller="mainController">
+    
+    <div class="container">
+        
+        <div ng-repeat="quote in quotes" class="box">
+            <p>"{{quote.text}}" -- <span class="author">{{quote.author}}</span></p>
+            <button ng-click="deleteMe(quote.text)">X</button>
+        </div>
+        
+           
+    </div>
+       
+        <div class = "holder">
+            <input type="text" placeholder="Add new quote!" ng-model='newQuoteText'>
+            <input type="text" placeholder="Quotes author!" ng-model='newQuoteAuthor'>
+            <button ng-click="addQuote()">Add Quote</button>
+        <div>
+            Filter: <input type="text" ng-model='filterText'/>
+        </div>
+        <p ng-repeat = "quote in quotes | filter: quote.filterText"></p>
+    </div>
+    
+
+    
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+     <script src="app.js"></script>
+     <script src="controller.js"></script>
+     <script src="mainService.js"></script>
+</body>
+</html>
